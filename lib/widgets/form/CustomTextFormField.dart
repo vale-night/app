@@ -60,12 +60,12 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             hintText: hintText,
             contentPadding: EdgeInsets.all(15.0),
             enabledBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color: APP_COLOR_HEX, width: 0.0)),
+                borderSide: const BorderSide(color: APP_PRIMARY_COLOR_HEX, width: 0.0)),
             border: const OutlineInputBorder(
-                borderSide: const BorderSide(color: APP_COLOR_HEX, width: 0.0)),
+                borderSide: const BorderSide(color: APP_PRIMARY_COLOR_HEX, width: 0.0)),
             focusedBorder: const OutlineInputBorder(
                 borderSide:
-                    const BorderSide(color: APP_COLOR_HEX, width: 0.0))),
+                    const BorderSide(color: APP_PRIMARY_COLOR_HEX, width: 0.0))),
         obscureText: isPassword ? true : false,
         validator: validator,
         onSaved: onSaved,
