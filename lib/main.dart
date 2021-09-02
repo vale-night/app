@@ -16,7 +16,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'ValeNight',
       theme: ThemeData(
-        primarySwatch: CreateMaterialColor().createMaterialColor(APP_PRIMARY_COLOR_HEX),
+        primarySwatch:
+            CreateMaterialColor().createMaterialColor(APP_PRIMARY_COLOR_HEX),
       ),
       home: MyHomePage(title: 'ValeNight'),
     );
@@ -42,24 +43,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        height: 10
-      ),
+      appBar: CustomAppBar(height: 10),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[Register()],
+          children: <Widget>[Login()],
         ),
       ),
     );

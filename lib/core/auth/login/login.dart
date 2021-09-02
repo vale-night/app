@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled/core/auth/register/register.dart';
 import 'package:untitled/widgets/form/CustomTextFormField.dart';
 
 class Login extends StatefulWidget {
@@ -32,9 +33,19 @@ class _LoginState extends State<Login> {
                   const SnackBar(content: Text('Processing Data')),
                 );
               },
-              child: Text('ENTRAR'))
+              child: Text('ENTRAR')),
+          Text('ou'),
+          ElevatedButton(onPressed: () {}, child: Text('CRIAR CONTA'))
         ],
       ),
+    );
+  }
+
+//TODO - Estrutura navegação na aplicação
+  navigateToRegister() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Register()),
     );
   }
 }
