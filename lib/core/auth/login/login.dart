@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled/core/auth/register/register.dart';
+import 'package:untitled/utils/services/valenight_api_service.dart';
 import 'package:untitled/widgets/form/CustomTextFormField.dart';
 
 class Login extends StatefulWidget {
@@ -12,7 +15,8 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
-
+  var email = '';
+  var password = '';
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -20,18 +24,29 @@ class _LoginState extends State<Login> {
       child: Column(
         children: [
           CustomTextFormField(
-              hintText: 'Email',
-              validator: (value) => ('true'),
-              onSaved: (newValue) => (true)),
+            hintText: 'Email',
+            isEmail: true,
+            validator: (value) => ('true'),
+            onSaved: (newValue) => (true),
+            onChanged: (newValue) => this.email = newValue,
+          ),
           CustomTextFormField(
-              hintText: 'Senha',
-              validator: (value) => ('true'),
-              onSaved: (newValue) => (true)),
+            hintText: 'Senha',
+            isPassword: true,
+            validator: (value) => ('true'),
+            onSaved: (newValue) => (true),
+            onChanged: (newValue) => this.password = newValue,
+          ),
           ElevatedButton(
-              onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Processing Data')),
-                );
+              onPressed: () async {
+                login().then((value) => {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                            content: Text(value
+                                ? 'Usuário autenticado'
+                                : 'Ocorreu um erro')),
+                      )
+                    });
               },
               child: Text('ENTRAR')),
           Text('ou'),
@@ -47,5 +62,10 @@ class _LoginState extends State<Login> {
       context,
       MaterialPageRoute(builder: (context) => Register()),
     );
+  }
+
+  Future<bool> login() async {
+    var result = await ValeNightApiService.login(this.email, this.password);
+    return result;
   }
 }

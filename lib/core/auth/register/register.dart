@@ -12,6 +12,10 @@ class Register extends StatefulWidget {
 
 class _RegisterState extends State<Register> {
   final _formKey = GlobalKey<FormState>();
+  var name = '';
+  var email = '';
+  var password = '';
+  var passwordConfirmation = '';
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +23,8 @@ class _RegisterState extends State<Register> {
       key: _formKey,
       child: Column(
         children: [
-          Text('Crie sua conta',
+          Text(
+            'Crie sua conta',
             textAlign: TextAlign.center,
             style: TextStyle(
               color: APP_PRIMARY_COLOR_HEX,
@@ -27,29 +32,37 @@ class _RegisterState extends State<Register> {
             ),
           ),
           CustomTextFormField(
-              hintText: 'Nome completo',
-              validator: (value) => ('true'),
-              onSaved: (newValue) => (true)),
+            hintText: 'Nome completo',
+            validator: (value) => ('true'),
+            onSaved: (newValue) => (true),
+            onChanged: (newValue) => this.name = newValue,
+          ),
           CustomTextFormField(
-              hintText: 'Email',
-              validator: (value) => ('true'),
-              onSaved: (newValue) => (true)),
+            hintText: 'Email',
+            validator: (value) => ('true'),
+            onSaved: (newValue) => (true),
+            onChanged: (newValue) => this.email = newValue,
+          ),
           CustomTextFormField(
-              hintText: 'Senha',
-              validator: (value) => ('true'),
-              onSaved: (newValue) => (true)),
+            hintText: 'Senha',
+            validator: (value) => ('true'),
+            onSaved: (newValue) => (true),
+            onChanged: (newValue) => this.password = newValue,
+          ),
           CustomTextFormField(
-              hintText: 'Confirmar Senha',
-              validator: (value) => ('true'),
-              onSaved: (newValue) => (true)),
+            hintText: 'Confirmar Senha',
+            validator: (value) => ('true'),
+            onSaved: (newValue) => (true),
+            onChanged: (newValue) => this.passwordConfirmation = newValue,
+          ),
           Container(
             width: double.infinity,
             padding: EdgeInsets.all(8.0),
             height: 75,
             child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: Colors.blueAccent,
-              ),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blueAccent,
+                ),
                 onPressed: () {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(content: Text('Processing Data')),
@@ -57,21 +70,16 @@ class _RegisterState extends State<Register> {
                 },
                 child: Text('Login com facebook')),
           ),
-
-
           Container(
             padding: EdgeInsets.all(8.0),
-            child:
-              Text(
-
-                  'Ao criar uma conta, você concorda com nossos termos de serviço e política de privacidade',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Color.fromRGBO(178, 178, 178, 1),
-                  ),
+            child: Text(
+              'Ao criar uma conta, você concorda com nossos termos de serviço e política de privacidade',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Color.fromRGBO(178, 178, 178, 1),
               ),
+            ),
           ),
-
           Container(
             width: double.infinity,
             padding: EdgeInsets.all(8.0),
@@ -84,7 +92,6 @@ class _RegisterState extends State<Register> {
                 },
                 child: Text('CRIAR CONTA')),
           )
-
         ],
       ),
     );
