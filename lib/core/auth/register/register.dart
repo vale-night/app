@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled/constants/app_constants.dart';
 import 'package:untitled/widgets/custom_app_bar.dart';
-import 'package:untitled/widgets/form/CustomTextFormField.dart';
+import 'package:untitled/widgets/form/custom_text_form_field.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
