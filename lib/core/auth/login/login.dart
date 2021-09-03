@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled/core/auth/choose-role/choose_role.dart';
 import 'package:untitled/core/auth/register/register.dart';
 import 'package:untitled/utils/services/valenight_api_service.dart';
 import 'package:untitled/widgets/form/CustomTextFormField.dart';
@@ -50,17 +51,20 @@ class _LoginState extends State<Login> {
               },
               child: Text('ENTRAR')),
           Text('ou'),
-          ElevatedButton(onPressed: () {}, child: Text('CRIAR CONTA'))
+          ElevatedButton(
+              onPressed: () {
+                this.navigateToChooseRole();
+              },
+              child: Text('CRIAR CONTA'))
         ],
       ),
     );
   }
 
-//TODO - Estrutura navegação na aplicação
-  navigateToRegister() {
+  navigateToChooseRole() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => Register()),
+      MaterialPageRoute(builder: (context) => ChooseRolePage()),
     );
   }
 

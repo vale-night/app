@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/constants/app_constants.dart';
+import 'package:untitled/core/auth/choose-role/choose_role.dart';
 import 'package:untitled/core/auth/login/login.dart';
 import 'package:untitled/core/auth/register/register.dart';
 import 'package:untitled/utils/helpers/create_material_color.dart';
@@ -20,6 +21,10 @@ class MyApp extends StatelessWidget {
             CreateMaterialColor().createMaterialColor(APP_PRIMARY_COLOR_HEX),
       ),
       home: MyHomePage(title: 'ValeNight'),
+      routes: {
+        '/choose_role': (context) => ChooseRolePage(),
+        '/client/register': (context) => Register()
+      },
     );
   }
 }
