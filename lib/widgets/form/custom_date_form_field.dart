@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled/widgets/form/custom_text_form_Field.dart';
+import 'package:untitled/widgets/form/text_form_field_wrapper.dart';
 
 class CustomDateFormField extends StatefulWidget {
   final String hintText;
@@ -22,6 +22,7 @@ class CustomDateFormField extends StatefulWidget {
 }
 
 class _CustomDateFormFieldState extends State<CustomDateFormField> {
+  final textEditingController = new TextEditingController();
   final String hintText;
   final FormFieldValidator<String> validator;
   final FormFieldSetter<String> onSaved;
@@ -32,23 +33,30 @@ class _CustomDateFormFieldState extends State<CustomDateFormField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: CustomTextFormField(
-        hintText: this.hintText,
-        validator: this.validator,
-        onChanged: this.onChanged,
-        onSaved: this.onSaved,
-        onFocusChange: () {
-          onFocusChange(context);
-        },
+      child: TextFormFieldWrapper(
+        textFormField: TextFormField(
+          decoration: InputDecoration(
+            hintText: this.hintText,
+          ),
+          onTap: () {
+            openDatePicker(context);
+          },
+          validator: this.validator,
+          onChanged: this.onChanged,
+          onSaved: this.onSaved,
+          controller: textEditingController,
+        ),
       ),
     );
   }
 
-  onFocusChange(BuildContext context) async {
+  openDatePicker(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
         context: context,
         initialDate: DateTime.now(),
         firstDate: DateTime(1900),
         lastDate: DateTime(2200));
+    this.textEditingController.text = picked.toString();
+    print(picked);
   }
 }

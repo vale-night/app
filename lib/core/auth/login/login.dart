@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:untitled/constants/app_constants.dart';
 import 'package:untitled/core/auth/choose-role/choose_role.dart';
 import 'package:untitled/utils/services/valenight_api_service.dart';
-import 'package:untitled/widgets/form/custom_text_form_field.dart';
+import 'package:untitled/widgets/form/text_form_field_wrapper.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -22,19 +22,23 @@ class _LoginState extends State<Login> {
       key: _formKey,
       child: Column(
         children: [
-          CustomTextFormField(
-            hintText: 'Email',
-            isEmail: true,
-            validator: (value) => ('true'),
-            onSaved: (newValue) => (true),
-            onChanged: (newValue) => this.email = newValue,
+          TextFormFieldWrapper(
+            textFormField: TextFormField(
+              decoration: InputDecoration(hintText: 'Email'),
+              validator: (value) => ('true'),
+              onSaved: (newValue) => (true),
+              onChanged: (newValue) => this.email = newValue,
+              keyboardType: TextInputType.emailAddress,
+            ),
           ),
-          CustomTextFormField(
-            hintText: 'Senha',
-            isPassword: true,
-            validator: (value) => ('true'),
-            onSaved: (newValue) => (true),
-            onChanged: (newValue) => this.password = newValue,
+          TextFormFieldWrapper(
+            textFormField: TextFormField(
+              decoration: InputDecoration(hintText: 'Senha'),
+              obscureText: true,
+              validator: (value) => ('true'),
+              onSaved: (newValue) => (true),
+              onChanged: (newValue) => this.password = newValue,
+            ),
           ),
           Container(
             width: double.infinity,

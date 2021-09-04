@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/config/themes/theme_config.dart';
-import 'package:untitled/constants/app_constants.dart';
 import 'package:untitled/core/auth/choose-role/choose_role.dart';
 import 'package:untitled/core/auth/login/login.dart';
 import 'package:untitled/core/auth/organizer/register/register_organizer.dart';
 import 'package:untitled/core/auth/register/register.dart';
-import 'package:untitled/utils/helpers/create_material_color.dart';
 import 'package:untitled/widgets/custom_app_bar.dart';
 
 void main() {

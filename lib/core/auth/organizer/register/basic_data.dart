@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled/widgets/form/custom_text_form_field.dart';
+import 'package:untitled/widgets/form/text_form_field_wrapper.dart';
 
 class BasicDataRegister extends StatefulWidget {
   const BasicDataRegister({Key? key}) : super(key: key);
@@ -27,29 +27,45 @@ class _BasicDataRegisterState extends State<BasicDataRegister> {
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.headline1,
           ),
-          CustomTextFormField(
-            hintText: 'Nome completo',
-            validator: (value) => ('true'),
-            onSaved: (newValue) => (true),
-            onChanged: (newValue) => this.name = newValue,
+          TextFormFieldWrapper(
+            textFormField: TextFormField(
+              decoration: InputDecoration(
+                hintText: 'Nome completo',
+              ),
+              validator: (value) => ('true'),
+              onSaved: (newValue) => (true),
+              onChanged: (newValue) => this.name = newValue,
+            ),
           ),
-          CustomTextFormField(
-            hintText: 'Email',
-            validator: (value) => ('true'),
-            onSaved: (newValue) => (true),
-            onChanged: (newValue) => this.email = newValue,
+          TextFormFieldWrapper(
+            textFormField: TextFormField(
+              decoration: InputDecoration(
+                hintText: 'Email',
+              ),
+              validator: (value) => ('true'),
+              onSaved: (newValue) => (true),
+              onChanged: (newValue) => this.email = newValue,
+            ),
           ),
-          CustomTextFormField(
-            hintText: 'Senha',
-            validator: (value) => ('true'),
-            onSaved: (newValue) => (true),
-            onChanged: (newValue) => this.password = newValue,
+          TextFormFieldWrapper(
+            textFormField: TextFormField(
+              decoration: InputDecoration(
+                hintText: 'Senha',
+              ),
+              validator: (value) => ('true'),
+              onSaved: (newValue) => (true),
+              onChanged: (newValue) => this.password = newValue,
+            ),
           ),
-          CustomTextFormField(
-            hintText: 'Confirmar Senha',
-            validator: (value) => ('true'),
-            onSaved: (newValue) => (true),
-            onChanged: (newValue) => this.passwordConfirmation = newValue,
+          TextFormFieldWrapper(
+            textFormField: TextFormField(
+              decoration: InputDecoration(
+                hintText: 'Confirmar Senha',
+              ),
+              validator: (value) => ('true'),
+              onSaved: (newValue) => (true),
+              onChanged: (newValue) => this.passwordConfirmation = newValue,
+            ),
           ),
           Container(
             padding: EdgeInsets.all(8.0),

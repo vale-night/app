@@ -97,10 +97,10 @@ class _RegisterOrganizerState extends State<RegisterOrganizer> {
   }
 
   continued() {
-    _currentStep < 2 ? setState(() => _currentStep += 1) : null;
+    if (_currentStep < 2) setState(() => _currentStep += 1);
   }
 
   cancel() {
-    _currentStep > 0 ? setState(() => _currentStep -= 1) : null;
+    if (_currentStep > 0) setState(() => _currentStep -= 1);
   }
 }

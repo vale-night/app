@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled/constants/app_constants.dart';
 import 'package:untitled/widgets/form/custom_date_form_field.dart';
-import 'package:untitled/widgets/form/custom_text_form_field.dart';
+import 'package:untitled/widgets/form/text_form_field_wrapper.dart';
 
 class PersonalDataRegister extends StatefulWidget {
   const PersonalDataRegister({Key? key}) : super(key: key);
@@ -27,23 +26,38 @@ class _PersonalDataRegisterState extends State<PersonalDataRegister> {
           Text('Dados Pessoais - Organizador',
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.headline1),
-          CustomTextFormField(
-            hintText: 'CPF',
-            validator: (value) => ('true'),
-            onSaved: (newValue) => (true),
-            onChanged: (newValue) => this.cpf = newValue,
-          ),
-          CustomTextFormField(
-            hintText: 'RG',
-            validator: (value) => ('true'),
-            onSaved: (newValue) => (true),
-            onChanged: (newValue) => this.rg = newValue,
-          ),
-          CustomDateFormField(
-            hintText: 'Data de Nascimento',
-            validator: (value) => ('true'),
-            onSaved: (newValue) => (true),
-            onChanged: (newValue) => this.password = newValue,
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                TextFormFieldWrapper(
+                  textFormField: TextFormField(
+                    decoration: InputDecoration(
+                      hintText: 'CPF',
+                    ),
+                    validator: (value) => ('true'),
+                    onSaved: (newValue) => (true),
+                    onChanged: (newValue) => this.cpf = newValue,
+                  ),
+                ),
+                TextFormFieldWrapper(
+                  textFormField: TextFormField(
+                    decoration: InputDecoration(
+                      hintText: 'RG',
+                    ),
+                    validator: (value) => ('true'),
+                    onSaved: (newValue) => (true),
+                    onChanged: (newValue) => this.rg = newValue,
+                  ),
+                ),
+                CustomDateFormField(
+                  hintText: 'Data de Nascimento',
+                  validator: (value) => ('true'),
+                  onSaved: (newValue) => (true),
+                  onChanged: (newValue) => this.password = newValue,
+                ),
+              ],
+            ),
           ),
           Container(
             padding: EdgeInsets.all(8.0),
