@@ -1,15 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled/models/organizer.dart';
 import 'package:untitled/widgets/form/text_form_field_wrapper.dart';
 
 class AddressRegister extends StatefulWidget {
-  const AddressRegister({Key? key}) : super(key: key);
+  final Organizer organizer;
+  const AddressRegister({Key? key, required this.organizer}) : super(key: key);
 
   @override
-  _AddressRegisterState createState() => _AddressRegisterState();
+  _AddressRegisterState createState() =>
+      _AddressRegisterState(organizer: this.organizer);
 }
 
 class _AddressRegisterState extends State<AddressRegister> {
+  final Organizer organizer;
   final _formKey = GlobalKey<FormState>();
   var cep;
   var street;
@@ -18,6 +22,8 @@ class _AddressRegisterState extends State<AddressRegister> {
   var city;
   var uf;
   var country;
+
+  _AddressRegisterState({required this.organizer});
 
   @override
   Widget build(BuildContext context) {

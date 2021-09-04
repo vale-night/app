@@ -2,9 +2,10 @@ import 'dart:convert';
 import 'package:untitled/constants/api_path.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:untitled/models/login.dart';
 import 'package:untitled/utils/services/local_storage_service.dart';
 
-class ValeNightApiService {
+class ValeNightAuthService {
   static Future<bool> login(String userName, String password) async {
     const url = '$BASE_AUTH_URL/login';
     http.Response response = await http.post(Uri.parse(url),
@@ -19,23 +20,5 @@ class ValeNightApiService {
       return true;
     }
     return false;
-  }
-}
-
-class LoginResponse {
-  String username;
-  String expiresIn;
-  String accessToken;
-
-  LoginResponse(
-      {required this.username,
-      required this.expiresIn,
-      required this.accessToken});
-
-  factory LoginResponse.fromJson(Map<String, dynamic> json) {
-    return LoginResponse(
-        username: json['username'],
-        expiresIn: json['expiresIn'],
-        accessToken: json['accessToken']);
   }
 }

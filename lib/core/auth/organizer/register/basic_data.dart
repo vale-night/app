@@ -1,20 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled/models/organizer.dart';
 import 'package:untitled/widgets/form/text_form_field_wrapper.dart';
 
 class BasicDataRegister extends StatefulWidget {
-  const BasicDataRegister({Key? key}) : super(key: key);
+  final Organizer organizer;
+  const BasicDataRegister({Key? key, required this.organizer})
+      : super(key: key);
 
   @override
-  _BasicDataRegisterState createState() => _BasicDataRegisterState();
+  _BasicDataRegisterState createState() =>
+      _BasicDataRegisterState(organizer: this.organizer);
 }
 
 class _BasicDataRegisterState extends State<BasicDataRegister> {
   final _formKey = GlobalKey<FormState>();
-  var name = '';
-  var email = '';
-  var password = '';
-  var passwordConfirmation = '';
+  final Organizer organizer;
+
+  _BasicDataRegisterState({required this.organizer});
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +36,8 @@ class _BasicDataRegisterState extends State<BasicDataRegister> {
                 hintText: 'Nome completo',
               ),
               validator: (value) => ('true'),
-              onSaved: (newValue) => (true),
-              onChanged: (newValue) => this.name = newValue,
+              onSaved: (newValue) => (organizer.name = newValue!),
+              onChanged: (newValue) => organizer.name = newValue,
             ),
           ),
           TextFormFieldWrapper(
@@ -43,8 +46,8 @@ class _BasicDataRegisterState extends State<BasicDataRegister> {
                 hintText: 'Email',
               ),
               validator: (value) => ('true'),
-              onSaved: (newValue) => (true),
-              onChanged: (newValue) => this.email = newValue,
+              onSaved: (newValue) => (organizer.user.email = newValue!),
+              onChanged: (newValue) => organizer.user.email = newValue,
             ),
           ),
           TextFormFieldWrapper(
@@ -54,8 +57,8 @@ class _BasicDataRegisterState extends State<BasicDataRegister> {
               ),
               obscureText: true,
               validator: (value) => ('true'),
-              onSaved: (newValue) => (true),
-              onChanged: (newValue) => this.password = newValue,
+              onSaved: (newValue) => (organizer.user.password = newValue!),
+              onChanged: (newValue) => organizer.user.password = newValue,
             ),
           ),
           TextFormFieldWrapper(
@@ -65,8 +68,10 @@ class _BasicDataRegisterState extends State<BasicDataRegister> {
               ),
               obscureText: true,
               validator: (value) => ('true'),
-              onSaved: (newValue) => (true),
-              onChanged: (newValue) => this.passwordConfirmation = newValue,
+              onSaved: (newValue) =>
+                  (organizer.user.passwordConfirmation = newValue!),
+              onChanged: (newValue) =>
+                  organizer.user.passwordConfirmation = newValue,
             ),
           ),
           Container(

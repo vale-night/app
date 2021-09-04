@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled/constants/app_constants.dart';
 import 'package:untitled/core/auth/choose-role/choose_role.dart';
-import 'package:untitled/utils/services/valenight_api_service.dart';
+import 'package:untitled/utils/services/valenight/valenight_auth_api_service.dart';
 import 'package:untitled/widgets/form/text_form_field_wrapper.dart';
 
 class Login extends StatefulWidget {
@@ -99,7 +99,7 @@ class _LoginState extends State<Login> {
   }
 
   Future<bool> login() async {
-    var result = await ValeNightApiService.login(this.email, this.password);
+    var result = await ValeNightAuthService.login(this.email, this.password);
     return result;
   }
 }

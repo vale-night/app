@@ -1,22 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled/constants/app_constants.dart';
+import 'package:untitled/models/organizer.dart';
 import 'package:untitled/widgets/form/date_form_field.dart';
 import 'package:untitled/widgets/form/text_form_field_wrapper.dart';
 
 class PersonalDataRegister extends StatefulWidget {
-  const PersonalDataRegister({Key? key}) : super(key: key);
+  final Organizer organizer;
+  const PersonalDataRegister({Key? key, required this.organizer})
+      : super(key: key);
 
   @override
-  _PersonalDataRegisterState createState() => _PersonalDataRegisterState();
+  _PersonalDataRegisterState createState() =>
+      _PersonalDataRegisterState(organizer: this.organizer);
 }
 
 class _PersonalDataRegisterState extends State<PersonalDataRegister> {
+  final Organizer organizer;
   final _formKey = GlobalKey<FormState>();
-  var cpf = '';
-  var rg = '';
-  var password = '';
-  var passwordConfirmation = '';
+
+  _PersonalDataRegisterState({required this.organizer});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +41,7 @@ class _PersonalDataRegisterState extends State<PersonalDataRegister> {
                     ),
                     validator: (value) => ('true'),
                     onSaved: (newValue) => (true),
-                    onChanged: (newValue) => this.cpf = newValue,
+                    onChanged: (newValue) => this.organizer.cpf = newValue,
                     inputFormatters: [CPF_MASK],
                   ),
                 ),
@@ -49,14 +52,15 @@ class _PersonalDataRegisterState extends State<PersonalDataRegister> {
                     ),
                     validator: (value) => ('true'),
                     onSaved: (newValue) => (true),
-                    onChanged: (newValue) => this.rg = newValue,
+                    onChanged: (newValue) => this.organizer.cnpj = newValue,
                   ),
                 ),
                 DateFormField(
                   hintText: 'Data de Nascimento',
                   validator: (value) => ('true'),
                   onSaved: (newValue) => (true),
-                  onChanged: (newValue) => this.password = newValue,
+                  onChanged: (newValue) => this.organizer.birthDate =
+                      null, //TODO - Passar data corretamente
                 ),
               ],
             ),
