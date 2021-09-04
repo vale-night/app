@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled/core/auth/organizer/register/address.dart';
 import 'package:untitled/core/auth/organizer/register/basic_data.dart';
 import 'package:untitled/core/auth/organizer/register/personal_data.dart';
 import 'package:untitled/widgets/custom_app_bar.dart';
@@ -12,6 +13,7 @@ class RegisterOrganizer extends StatefulWidget {
 }
 
 class _RegisterOrganizerState extends State<RegisterOrganizer> {
+  final _formKey = GlobalKey<FormState>();
   int _currentStep = 0;
   StepperType stepperType = StepperType.horizontal;
 
@@ -20,6 +22,7 @@ class _RegisterOrganizerState extends State<RegisterOrganizer> {
     return Scaffold(
       appBar: CustomAppBar(),
       body: Form(
+        key: _formKey,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -56,10 +59,7 @@ class _RegisterOrganizerState extends State<RegisterOrganizer> {
                     title: new Text('Mobile Number'),
                     content: Column(
                       children: <Widget>[
-                        TextFormField(
-                          decoration:
-                              InputDecoration(labelText: 'Mobile Number'),
-                        ),
+                        AddressRegister(),
                       ],
                     ),
                     isActive: _currentStep >= 0,
@@ -77,9 +77,14 @@ class _RegisterOrganizerState extends State<RegisterOrganizer> {
                         height: 75,
                         child: ElevatedButton(
                             onPressed: () async {
-                              onStepContinue?.call();
+                              if (_currentStep == 2) {
+                                saveOrganizer();
+                              } else {
+                                onStepContinue?.call();
+                              }
                             },
-                            child: Text('AVANÇAR')),
+                            child:
+                                Text(_currentStep == 2 ? 'SALVAR' : 'AVANÇAR')),
                       ),
                     ],
                   );
@@ -90,6 +95,10 @@ class _RegisterOrganizerState extends State<RegisterOrganizer> {
         ),
       ),
     );
+  }
+
+  saveOrganizer() {
+    print('TODO - Salvar organizador');
   }
 
   tapped(int step) {

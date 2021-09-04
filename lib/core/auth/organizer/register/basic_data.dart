@@ -52,6 +52,7 @@ class _BasicDataRegisterState extends State<BasicDataRegister> {
               decoration: InputDecoration(
                 hintText: 'Senha',
               ),
+              obscureText: true,
               validator: (value) => ('true'),
               onSaved: (newValue) => (true),
               onChanged: (newValue) => this.password = newValue,
@@ -62,6 +63,7 @@ class _BasicDataRegisterState extends State<BasicDataRegister> {
               decoration: InputDecoration(
                 hintText: 'Confirmar Senha',
               ),
+              obscureText: true,
               validator: (value) => ('true'),
               onSaved: (newValue) => (true),
               onChanged: (newValue) => this.passwordConfirmation = newValue,

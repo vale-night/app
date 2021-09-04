@@ -9,6 +9,7 @@ class ThemeConfig {
       primarySwatch:
           CreateMaterialColor().createMaterialColor(APP_PRIMARY_COLOR_HEX),
       textTheme: TextTheme(
+        bodyText2: TextStyle(color: APP_PRIMARY_COLOR_HEX),
         headline1: TextStyle(color: APP_PRIMARY_COLOR_HEX, fontSize: 30),
         headline2: TextStyle(color: APP_PRIMARY_COLOR_HEX, fontSize: 30),
         headline3: TextStyle(color: APP_PRIMARY_COLOR_HEX, fontSize: 30),

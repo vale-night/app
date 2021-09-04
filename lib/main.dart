@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:untitled/config/themes/theme_config.dart';
 import 'package:untitled/core/auth/choose-role/choose_role.dart';
 import 'package:untitled/core/auth/login/login.dart';
@@ -7,6 +8,7 @@ import 'package:untitled/core/auth/register/register.dart';
 import 'package:untitled/widgets/custom_app_bar.dart';
 
 void main() {
+  Intl.defaultLocale = 'pt_BR';
   runApp(MyApp());
 }
 

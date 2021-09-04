@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled/widgets/form/custom_date_form_field.dart';
+import 'package:untitled/constants/app_constants.dart';
+import 'package:untitled/widgets/form/date_form_field.dart';
 import 'package:untitled/widgets/form/text_form_field_wrapper.dart';
 
 class PersonalDataRegister extends StatefulWidget {
@@ -38,6 +39,7 @@ class _PersonalDataRegisterState extends State<PersonalDataRegister> {
                     validator: (value) => ('true'),
                     onSaved: (newValue) => (true),
                     onChanged: (newValue) => this.cpf = newValue,
+                    inputFormatters: [CPF_MASK],
                   ),
                 ),
                 TextFormFieldWrapper(
@@ -50,7 +52,7 @@ class _PersonalDataRegisterState extends State<PersonalDataRegister> {
                     onChanged: (newValue) => this.rg = newValue,
                   ),
                 ),
-                CustomDateFormField(
+                DateFormField(
                   hintText: 'Data de Nascimento',
                   validator: (value) => ('true'),
                   onSaved: (newValue) => (true),
@@ -60,15 +62,24 @@ class _PersonalDataRegisterState extends State<PersonalDataRegister> {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(8.0),
-            child: Text(
-              'Ao criar uma conta, você concorda com nossos termos de serviço e política de privacidade',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Color.fromRGBO(178, 178, 178, 1),
-              ),
-            ),
-          ),
+              padding: EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  IconButton(
+                      iconSize: 100,
+                      icon: Icon(
+                        Icons.add_a_photo_outlined,
+                      ),
+                      onPressed: () {
+                        //TODO - Implementar upload de foto
+                        print('TODO - Implementar upload de foto');
+                      }),
+                  Text(
+                    'Clique para nos enviar uma foto sua!',
+                    style: Theme.of(context).textTheme.bodyText2,
+                  )
+                ],
+              )),
         ],
       ),
     );
