@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/config/themes/theme_config.dart';
 import 'package:untitled/constants/app_constants.dart';
 import 'package:untitled/core/auth/choose-role/choose_role.dart';
 import 'package:untitled/core/auth/login/login.dart';
@@ -17,10 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'ValeNight',
-      theme: ThemeData(
-        primarySwatch:
-            CreateMaterialColor().createMaterialColor(APP_PRIMARY_COLOR_HEX),
-      ),
+      theme: ThemeConfig().materialTheme,
       home: MyHomePage(title: 'ValeNight'),
       routes: {
         '/choose_role': (context) => ChooseRolePage(),

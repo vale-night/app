@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled/constants/app_constants.dart';
 import 'package:untitled/widgets/form/custom_text_form_field.dart';
 
 class BasicDataRegister extends StatefulWidget {
@@ -26,10 +25,7 @@ class _BasicDataRegisterState extends State<BasicDataRegister> {
           Text(
             'Crie sua conta - Organizador',
             textAlign: TextAlign.center,
-            style: TextStyle(
-              color: APP_PRIMARY_COLOR_HEX,
-              fontSize: 30,
-            ),
+            style: Theme.of(context).textTheme.headline1,
           ),
           CustomTextFormField(
             hintText: 'Nome completo',

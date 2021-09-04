@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:untitled/constants/app_constants.dart';
 import 'package:untitled/widgets/form/custom_date_form_field.dart';
 import 'package:untitled/widgets/form/custom_text_form_field.dart';
@@ -23,14 +24,9 @@ class _PersonalDataRegisterState extends State<PersonalDataRegister> {
       key: _formKey,
       child: Column(
         children: [
-          Text(
-            'Dados Pessoais - Organizador',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: APP_PRIMARY_COLOR_HEX,
-              fontSize: 30,
-            ),
-          ),
+          Text('Dados Pessoais - Organizador',
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.headline1),
           CustomTextFormField(
             hintText: 'CPF',
             validator: (value) => ('true'),

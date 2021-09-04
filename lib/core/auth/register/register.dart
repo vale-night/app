@@ -25,14 +25,12 @@ class _RegisterState extends State<Register> {
       body: Form(
         key: _formKey,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               'Crie sua conta',
               textAlign: TextAlign.center,
-              style: TextStyle(
-                color: APP_PRIMARY_COLOR_HEX,
-                fontSize: 30,
-              ),
+              style: Theme.of(context).textTheme.headline1,
             ),
             CustomTextFormField(
               hintText: 'Nome completo',
